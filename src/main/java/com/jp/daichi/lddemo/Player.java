@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class Player {
 
-    private static final double speed = 100;
+    private static final double speed = 200;
     public boolean LEFT;
     public boolean RIGHT;
     public boolean UP;
@@ -41,8 +41,8 @@ public class Player {
             nextY += speed*deltaTime;
         }
 
-        setX(nextX);
-        setY(nextY);
+        setX(Math.round(nextX));
+        setY(Math.round(nextY));
     }
 
     /**

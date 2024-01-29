@@ -5,6 +5,8 @@ import com.jp.daichi.designer.interfaces.Canvas;
 import com.jp.daichi.designer.interfaces.manager.CanvasManager;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,6 +17,11 @@ public class Main {
         Canvas canvas = manager.getInstance();
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.addMouseWheelListener(e -> {
+            canvas.getViewport().x += e.getPreciseWheelRotation();
+            System.out.println(e.getPreciseWheelRotation());
+            canvas.setViewport(canvas.getViewport());
+        });
         frame.setLocationRelativeTo(null);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.add(new GameView(canvas));
